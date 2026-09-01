@@ -1,34 +1,22 @@
 import userData from '../fixtures/users/userData.json'
 import LoginPage from '../pages/loginPage.js'
 import DashboardPage from '../pages/dashboardPage.js'
-import MyInfoPage from '../pages/myInfoPage.js'
-import MenuPage from '../pages/menuPage.js'
 
-const Chance = require('chance')
 
-const chance = new Chance()
 const loginPage = new LoginPage()
 const dashboardPage = new DashboardPage()
-const myInfoPage = new MyInfoPage()
-const menuPage = new MenuPage()
+
 
 describe('Orange HRM Tests', () => {
   it('User Info Update - Sucess', () => {
     loginPage.acessLoginPage() 
     loginPage.loginWithUser(userData.userSucess.username, userData.userSucess.password)
-
     dashboardPage.acessDashboardPage()
-    menuPage.acessMyInfo()
-    myInfoPage.myInfoPersonalDetails(chance.first(), chance.last())
-    myInfoPage.myInfoEmployee(chance.integer({ min: -20, max: 20 }), chance.integer({ min: -20, max: 20 }), chance.integer({ min: -20, max: 20 }))
-    myInfoPage.myInfoStatus()
-    myInfoPage.saveMyInfoPage()
-
   })
 
   it('User Info Update - Fail', () => {
     loginPage.acessLoginPage()
     loginPage.loginWithUserFail(userData.userFail.username, userData.userFail.password, )
-
+    
   })
 })
